@@ -41,7 +41,7 @@ public class _00SortArray {
         return nums;
     }
 
-    // 3. 插入排序 
+    // 3. 插入排序 O(N^2) O(1)
     // 3 2 1 
     // 630ms 46MB
     // 稳定排序，在接近有序的情况下，表现优异
@@ -51,11 +51,12 @@ public class _00SortArray {
             // 暂存元素
             int temp = nums[i];
             int j = i;
-
+            // 如果 j 指向的元素比暂存元素大 向后移动占掉暂存元素原来的位置
             while (j > 0 && nums[j - 1] > temp) {
                 nums[j] = nums[j - 1];
                 j--;
             }
+            // 补上暂存元素
             nums[j] = temp;
         }
         return nums;
