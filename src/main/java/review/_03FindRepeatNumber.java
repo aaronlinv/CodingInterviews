@@ -1,13 +1,11 @@
+package review;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author Aaron
- * @date 2021-02-03 17:20
- */
 public class _03FindRepeatNumber {
     // 长度为 n 的数组 nums 里的所有数字都在 0～n-1 
     class Solution {
@@ -47,31 +45,24 @@ public class _03FindRepeatNumber {
             比如 nums[0] 值如果为0 就不变
             如果 nums[0] 值为1 那就把它的值与 nums[1] 的交换
             保证 nums[index] = index
+            保证下标 与其值相同否者，否则就不对
              */
-
+            
+            int temp;
             for (int i = 0; i < nums.length; i++) {
-                int temp;
-                // 下标index 与 值x 不相同
-                if (nums[i] != i) {
-                    // 且 nums[x] 得值 与 x相同 重复了 ，否则交换
-                    if (nums[nums[i]] == nums[i]) {
+                // 保证index 和值x 相同，否者要交换
+                if(nums[i] != i){
+                    // 出现两个 nums[i]值
+                    if(nums[nums[i]]== nums[i]){
                         return nums[i];
                     }
-                    /*
-                    错误交换！   
-                    temp = nums[i];
-                    nums[i] = nums[nums[i]];
-                    // 这个时候 nums[i] 已经被修改了
-                    nums[nums[i]] = temp;
-                    
-                     */
-
                     temp = nums[i];
                     nums[i] = nums[temp];
                     nums[temp] = temp;
                 }
             }
             return -1;
+
         }
 
     }
